@@ -1,0 +1,29 @@
+{
+  "name": "@wanda/agent-store",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./reducer": "./src/reducer.ts",
+    "./state": "./src/state.ts",
+    "./store": "./src/store.ts",
+    "./dedup": "./src/dedup.ts",
+    "./streaming-atom": "./src/streaming-atom.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@wanda/agent-protocol": "workspace:*",
+    "@wanda/wire": "workspace:*",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
+}

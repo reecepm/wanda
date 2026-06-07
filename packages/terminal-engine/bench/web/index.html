@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal Engine Benchmark</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@6.1.0-beta.197/css/xterm.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Dashboard */
+    #dashboard {
+      display: flex;
+      gap: 16px;
+      padding: 12px 16px;
+      background: #111;
+      border-bottom: 1px solid #222;
+      flex-shrink: 0;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .metric-label {
+      font-size: 10px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .metric-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .metric-value.good { color: #4ade80; }
+    .metric-value.bad { color: #f87171; }
+    .metric-value.neutral { color: #60a5fa; }
+
+    /* Controls */
+    #controls {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+      align-items: center;
+    }
+    button {
+      padding: 6px 14px;
+      border: 1px solid #333;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+    }
+    button:hover { background: #252525; }
+    button.active { border-color: #4ade80; color: #4ade80; }
+    select, input {
+      padding: 4px 8px;
+      border: 1px solid #333;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 12px;
+    }
+
+    /* Terminal grid */
+    #terminal-grid {
+      flex: 1;
+      display: grid;
+      gap: 2px;
+      padding: 2px;
+      overflow: hidden;
+    }
+    .terminal-pane {
+      position: relative;
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+      overflow: hidden;
+    }
+    .terminal-pane.active { border-color: #4ade80; }
+    .pane-header {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      font-size: 10px;
+      color: #555;
+      pointer-events: none;
+    }
+    .pane-status { font-weight: 600; }
+    .pane-status.ok { color: #4ade80; }
+    .pane-status.err { color: #f87171; }
+
+    /* Per-terminal verification overlay */
+    .verify-badge {
+      position: absolute;
+      bottom: 4px;
+      right: 8px;
+      z-index: 10;
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+    .verify-badge.pass { background: #052e16; color: #4ade80; }
+    .verify-badge.fail { background: #450a0a; color: #f87171; }
+    .verify-badge.pending { background: #1a1a1a; color: #666; }
+  </style>
+</head>
+<body>
+  <div id="dashboard">
+    <div class="metric">
+      <span class="metric-label">Terminals</span>
+      <span id="m-terminals" class="metric-value neutral">0</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Throughput</span>
+      <span id="m-throughput" class="metric-value neutral">0 MB/s</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Lines/sec</span>
+      <span id="m-lines" class="metric-value neutral">0</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Frame Time</span>
+      <span id="m-frametime" class="metric-value good">0ms</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Ordering</span>
+      <span id="m-ordering" class="metric-value good">0 violations</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">CRC</span>
+      <span id="m-crc" class="metric-value good">0 failures</span>
+    </div>
+    <div class="metric">
+      <span class="metric-label">Drops</span>
+      <span id="m-drops" class="metric-value good">0</span>
+    </div>
+
+    <div id="controls">
+      <label>
+        Count:
+        <input id="term-count" type="number" min="1" max="100" value="8" style="width: 50px" />
+      </label>
+      <label>
+        Duration:
+        <select id="duration">
+          <option value="5000">5s</option>
+          <option value="10000" selected>10s</option>
+          <option value="30000">30s</option>
+          <option value="60000">60s</option>
+        </select>
+      </label>
+      <button id="btn-start">Start</button>
+      <button id="btn-stop" disabled>Stop</button>
+    </div>
+  </div>
+  <div id="terminal-grid"></div>
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>

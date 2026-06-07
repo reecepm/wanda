@@ -1,0 +1,30 @@
+{
+  "name": "@wanda/wire",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./envelope": "./src/envelope.ts",
+    "./binary-frames": "./src/binary-frames.ts",
+    "./contracts/resources": "./src/contracts/resources.ts",
+    "./contracts/refs": "./src/contracts/refs.ts",
+    "./contracts/events": "./src/contracts/events.ts",
+    "./contracts/hello": "./src/contracts/hello.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "gen:refs": "bun scripts/gen-refs.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "fast-check": "^3.23.0",
+    "vitest": "^4.0.18"
+  }
+}

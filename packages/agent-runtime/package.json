@@ -1,0 +1,31 @@
+{
+  "name": "@wanda/agent-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/types.ts",
+    "./state-machine": "./src/state-machine.ts",
+    "./errors": "./src/errors.ts",
+    "./mock-provider": "./src/mock-provider.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@wanda/agent-protocol": "workspace:*",
+    "@wanda/event-log": "workspace:*",
+    "@wanda/subscriptions": "workspace:*",
+    "@wanda/wire": "workspace:*",
+    "effect": "^3.19.16",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
+}

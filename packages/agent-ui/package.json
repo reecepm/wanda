@@ -1,0 +1,39 @@
+{
+  "name": "@wanda/agent-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./context": "./src/context.tsx",
+    "./tools/registry": "./src/tools/registry.ts",
+    "./agent-ui.css": "./src/agent-ui.css"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@ariakit/react": "^0.4.21",
+    "@wanda/agent-protocol": "workspace:*",
+    "@wanda/agent-store": "workspace:*",
+    "clsx": "^2.1.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.0",
+    "tailwind-merge": "^3.4.0"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "happy-dom": "^20",
+    "vitest": "^4.0.18"
+  }
+}

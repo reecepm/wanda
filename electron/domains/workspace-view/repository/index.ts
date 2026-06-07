@@ -1,0 +1,16 @@
+export {
+  type AggregatedCommandConfigs,
+  type AggregatedItems,
+  type AggregatedTerminalConfigs,
+  createWorkspaceView,
+  deleteWorkspaceView,
+  getWorkspaceViewById,
+  listAggregatedCommandConfigs,
+  listAggregatedItems,
+  listAggregatedTerminalConfigs,
+  listViewsByWorkspace,
+  setActiveWorkspaceView,
+  updateWorkspaceView,
+  type WorkspaceViewRow,
+  type WorkspaceViewUpdateInput,
+} from './views'

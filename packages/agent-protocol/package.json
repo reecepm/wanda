@@ -1,0 +1,34 @@
+{
+  "name": "@wanda/agent-protocol",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ids": "./src/ids.ts",
+    "./tool-kind": "./src/tool-kind.ts",
+    "./tool-detail": "./src/tool-detail.ts",
+    "./plan": "./src/plan.ts",
+    "./content": "./src/content.ts",
+    "./capabilities": "./src/capabilities.ts",
+    "./permission": "./src/permission.ts",
+    "./event": "./src/event.ts",
+    "./ui-message": "./src/ui-message.ts",
+    "./rpc-io": "./src/rpc-io.ts",
+    "./versions": "./src/versions.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@wanda/wire": "workspace:*",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
+}

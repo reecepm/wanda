@@ -1,0 +1,160 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1775677914887,
+      "tag": "0000_initial",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1775679093149,
+      "tag": "0001_oval_viper",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1775938620146,
+      "tag": "0002_tense_sentinel",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1776042942847,
+      "tag": "0003_wandering_captain_marvel",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1776093764634,
+      "tag": "0004_useful_jazinda",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1776097776165,
+      "tag": "0005_motionless_colleen_wing",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1776121195469,
+      "tag": "0006_chief_doomsday",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1776280410929,
+      "tag": "0007_drop_targets_and_target_ids",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1776374710468,
+      "tag": "0008_fancy_naoko",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1776815182175,
+      "tag": "0009_add_provider_secrets",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1776818552975,
+      "tag": "0010_create_chat_sessions",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1776820241034,
+      "tag": "0011_create_agent_pending_permissions",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1776886791046,
+      "tag": "0012_create_agent_attachments",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1777012800000,
+      "tag": "0013_create_permission_policies",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "6",
+      "when": 1777243200000,
+      "tag": "0014_add_agent_reasoning_effort",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "6",
+      "when": 1777319533150,
+      "tag": "0015_workenv_drop_v1_envs",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "6",
+      "when": 1777392800000,
+      "tag": "0016_workspace_default_workenv_template",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "6",
+      "when": 1777397400000,
+      "tag": "0017_workenv_prebuilds",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "6",
+      "when": 1777680000000,
+      "tag": "0018_wanda_mcp_policy",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "6",
+      "when": 1777756948073,
+      "tag": "0019_wealthy_masque",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "6",
+      "when": 1777800000000,
+      "tag": "0020_add_graphite_workspace_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "6",
+      "when": 1779000000000,
+      "tag": "0021_workspace_icon_url",
+      "breakpoints": true
+    }
+  ]
+}

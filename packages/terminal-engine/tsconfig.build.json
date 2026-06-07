@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "#xterm-headless": ["../../node_modules/@xterm/headless/lib-headless/xterm-headless.mjs"],
+      "#xterm-serialize": ["../../node_modules/@xterm/addon-serialize/lib/addon-serialize.mjs"]
+    }
+  },
+  "include": ["src"]
+}

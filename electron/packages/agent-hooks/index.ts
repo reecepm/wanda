@@ -1,0 +1,7 @@
+export { ApprovalWatcher } from './approval-watcher'
+export { ensureGlobalGitignore } from './ensure-global-gitignore'
+export { injectClaudeHooks } from './inject-claude'
+export { injectCodexHooks } from './inject-codex'
+export { injectOpenCodePlugin } from './inject-opencode'
+export type { AgentStatus, AgentStatusEntry, AgentStatusEvent, AgentStatusServiceShape } from './status-service'
+export { AgentStatusService, AgentStatusServiceLive } from './status-service'

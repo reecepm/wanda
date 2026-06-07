@@ -1,0 +1,51 @@
+{
+  "name": "@wanda/terminal-engine",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/ws-client.d.ts",
+      "default": "./dist/ws-client.js"
+    },
+    "./protocol": {
+      "types": "./dist/protocol.d.ts",
+      "default": "./dist/protocol.js"
+    }
+  },
+  "imports": {
+    "#xterm-headless": "@xterm/headless/lib-headless/xterm-headless.mjs",
+    "#xterm-serialize": "@xterm/addon-serialize/lib/addon-serialize.mjs"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "bench": "tsx bench/harness.ts",
+    "bench:web": "vite --config bench/web/vite.config.ts"
+  },
+  "dependencies": {
+    "@xterm/headless": "6.1.0-beta.197",
+    "@xterm/addon-serialize": "0.15.0-beta.197",
+    "ws": "^8.19.0"
+  },
+  "peerDependencies": {
+    "node-pty": "^1.1.0"
+  },
+  "devDependencies": {
+    "@xterm/xterm": "6.1.0-beta.197",
+    "@xterm/addon-fit": "0.12.0-beta.197",
+    "@xterm/addon-webgl": "0.20.0-beta.196",
+    "@xterm/addon-web-links": "0.13.0-beta.197",
+    "@types/ws": "^8.18.1",
+    "vitest": "^4.0.18",
+    "tsx": "^4.21.0",
+    "vite": "^7.2.4"
+  }
+}

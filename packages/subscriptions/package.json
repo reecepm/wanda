@@ -1,0 +1,23 @@
+{
+  "name": "@wanda/subscriptions",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@wanda/wire": "workspace:*"
+  },
+  "devDependencies": {
+    "fast-check": "^3.23.0",
+    "vitest": "^4.0.18"
+  }
+}

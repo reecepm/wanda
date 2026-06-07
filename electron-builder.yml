@@ -1,0 +1,37 @@
+appId: com.wanda.app
+productName: Wanda
+icon: resources/icon.png
+directories:
+  output: release
+files:
+  - out/**/*
+  - resources/tray/**/*
+  - node_modules/**/*
+  - package.json
+extraResources:
+  - from: electron/db/migrations
+    to: migrations
+  - from: electron/mcp/dist
+    to: mcp
+  - from: resources/dock-icon.png
+    to: dock-icon.png
+  - from: resources/dock-icon-dev.png
+    to: dock-icon-dev.png
+mac:
+  icon: resources/icon.icon
+  category: public.app-category.developer-tools
+  target:
+    - dmg
+    - zip
+  hardenedRuntime: true
+win:
+  target:
+    - nsis
+linux:
+  target:
+    - AppImage
+    - deb
+npmRebuild: false
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true

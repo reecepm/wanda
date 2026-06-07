@@ -1,0 +1,256 @@
+{
+  "$schema": "./frontend-architecture-exceptions.schema.json",
+  "lastReviewed": "2026-05-04",
+  "rules": {
+    "legacy-pages": {
+      "owner": "frontend-cleanup",
+      "justification": "No legacy page files are currently approved; this empty rule keeps the architecture check rejecting any production src/pages screen that appears later.",
+      "removalCondition": "Keep this list empty. Any future entry requires an explicit temporary owner and cleanup plan.",
+      "files": []
+    },
+    "legacy-page-imports": {
+      "owner": "frontend-cleanup",
+      "justification": "No production imports from deprecated page modules are currently approved; this empty rule keeps the architecture check rejecting any new proxy.",
+      "removalCondition": "Keep this list empty. Any future entry requires an explicit temporary owner and cleanup plan.",
+      "imports": []
+    },
+    "renderer-electron-imports": {
+      "owner": "frontend-cleanup",
+      "justification": "Approved renderer boundary files adapt the Electron preload API for browser/web entry typing.",
+      "removalCondition": "Remove entries if these files stop importing preload/type boundary code from electron/.",
+      "files": ["src/types/electron.d.ts", "src/web-entry.ts"]
+    },
+    "shared-contract-electron-router-compat": {
+      "owner": "frontend-cleanup",
+      "justification": "The existing router compatibility contract imports the server router type until the boundary type is generated or exported from shared/contracts.",
+      "removalCondition": "Remove this entry when shared/contracts/router.ts no longer imports from electron/router.",
+      "files": ["shared/contracts/router.ts"]
+    },
+    "raw-window-wanda": {
+      "owner": "frontend-cleanup",
+      "justification": "Approved renderer boundary modules that adapt the preload/native API: shared app/oRPC/outbox bridges, web bootstrap, and owning feature transports for agent sessions, agent events, server pairing, and terminals.",
+      "removalCondition": "Delete an entry if its window.wanda access moves behind a narrower boundary or the native capability is replaced by shared oRPC/contracts.",
+      "files": [
+        "src/features/agent-session/transport.ts",
+        "src/features/agent/agent-events.ts",
+        "src/features/servers/use-servers.ts",
+        "src/features/terminal/terminal-transport.ts",
+        "src/shared/app-bridge.ts",
+        "src/shared/orpc.ts",
+        "src/shared/paired-client-outbox.ts",
+        "src/web-entry.ts"
+      ]
+    },
+    "direct-orpc-client": {
+      "owner": "frontend-cleanup",
+      "justification": "Pre-existing files import the raw oRPC client directly. New files should use feature hooks/query helpers unless explicitly documented.",
+      "removalCondition": "Delete each file entry after raw orpc usage is replaced by feature hooks, orpcUtils query options, or a documented transport adapter.",
+      "files": []
+    },
+    "unsafe-type-escapes": {
+      "owner": "frontend-cleanup",
+      "justification": "Pre-existing frontend files still contain explicit any, @ts-ignore/@ts-expect-error, or broad double-cast patterns. New unsafe typing files should be rejected while this list is burned down.",
+      "removalCondition": "Delete each file entry after unsafe type escapes are replaced by precise types, narrowing, or documented boundary types.",
+      "files": []
+    },
+    "bundle-split-deep-imports": {
+      "owner": "bundle-audit",
+      "justification": "These imports intentionally bypass cross-feature barrels because Vite/Rollup route splitting produced circular chunk warnings when lazy chunks imported modules through barrels that also re-exported their dependencies.",
+      "removalCondition": "Remove each entry if the barrel is split into smaller non-cyclic public entry points or Rollup manual chunking makes the direct import unnecessary without reintroducing circular chunk warnings.",
+      "imports": [
+        {
+          "file": "src/features/git/components/review/send-to-agent-dialog.tsx",
+          "source": "@/features/pod/utils/add-item-actions"
+        },
+        {
+          "file": "src/features/git/components/review/send-to-agent-dialog.tsx",
+          "source": "@/features/pod/utils/agent-utils"
+        },
+        {
+          "file": "src/features/git/components/review/send-to-agent-dialog.tsx",
+          "source": "@/features/terminal/terminal-transport"
+        },
+        {
+          "file": "src/features/git/components/review/send-to-agent-dialog.tsx",
+          "source": "@/features/view/store/view-store"
+        },
+        {
+          "file": "src/features/command-palette/components/command-palette.tsx",
+          "source": "@/features/terminal/terminal-registry"
+        },
+        {
+          "file": "src/features/notifications/components/notification-item.tsx",
+          "source": "@/features/workspace/utils/focus-pod-agent"
+        },
+        {
+          "file": "src/features/pod/components/command-output-dialog.tsx",
+          "source": "@/features/terminal/components/terminal-view"
+        },
+        {
+          "file": "src/features/pod/components/pod-create-dialog.tsx",
+          "source": "@/features/workspace/hooks/use-workspace-explorer"
+        },
+        {
+          "file": "src/features/pod/components/pod-screen.tsx",
+          "source": "@/features/shortcuts/use-shortcuts"
+        },
+        {
+          "file": "src/features/pod/components/pod-screen.tsx",
+          "source": "@/features/terminal/terminal-transport"
+        },
+        {
+          "file": "src/features/pod/components/pod-screen.tsx",
+          "source": "@/features/view/components/active-view-renderer"
+        },
+        {
+          "file": "src/features/pod/components/pod-screen.tsx",
+          "source": "@/features/view/components/item-picker"
+        },
+        {
+          "file": "src/features/pod/components/pod-screen.tsx",
+          "source": "@/features/view/components/view-tab-strip"
+        },
+        {
+          "file": "src/features/pod/components/pod-screen.tsx",
+          "source": "@/features/view/scope"
+        },
+        {
+          "file": "src/features/pod/components/pod-screen.tsx",
+          "source": "@/features/view/store/view-callbacks"
+        },
+        {
+          "file": "src/features/pod/components/pod-screen.tsx",
+          "source": "@/features/view/store/view-store"
+        },
+        {
+          "file": "src/features/pod/hooks/use-active-pod-client.ts",
+          "source": "@/features/servers/use-servers"
+        },
+        {
+          "file": "src/features/pod/utils/add-item-actions.ts",
+          "source": "@/features/view/store/view-store"
+        },
+        {
+          "file": "src/features/pod/utils/agent-session-utils.ts",
+          "source": "@/features/view/store/view-store"
+        },
+        {
+          "file": "src/features/settings/components/settings-screen.tsx",
+          "source": "@/features/pod/components/templates-screen"
+        },
+        {
+          "file": "src/features/settings/components/settings-screen.tsx",
+          "source": "@/features/pod/utils/agent-options"
+        },
+        {
+          "file": "src/features/settings/components/settings-screen.tsx",
+          "source": "@/features/servers/components/machines-screen"
+        },
+        {
+          "file": "src/features/settings/components/settings-screen.tsx",
+          "source": "@/features/shortcuts/shortcuts"
+        },
+        {
+          "file": "src/features/settings/components/settings-screen.tsx",
+          "source": "@/features/view/utils/item-menu-order"
+        },
+        {
+          "file": "src/features/workspace/components/workspace-explorer.tsx",
+          "source": "@/features/shortcuts/use-shortcuts"
+        },
+        {
+          "file": "src/layout/app-layout.tsx",
+          "source": "@/features/pod/hooks/use-pod-lifecycle"
+        },
+        {
+          "file": "src/layout/app-layout.tsx",
+          "source": "@/features/pod/utils/browser-utils"
+        },
+        {
+          "file": "src/layout/app-layout.tsx",
+          "source": "@/features/terminal/terminal-transport"
+        },
+        {
+          "file": "src/shared/connection-status.tsx",
+          "source": "@/features/servers/use-paired-status"
+        },
+        {
+          "file": "src/shared/connection-status.tsx",
+          "source": "@/features/servers/use-servers"
+        },
+        {
+          "file": "src/shared/preload-bootstrap.ts",
+          "source": "@/features/workspace/hooks/use-workspace-explorer"
+        },
+        {
+          "file": "src/tray/components/agent-type-picker.tsx",
+          "source": "@/features/pod/utils/agent-utils"
+        },
+        {
+          "file": "src/tray/hooks/use-tray-actions.ts",
+          "source": "@/features/pod/utils/agent-utils"
+        },
+        {
+          "file": "src/tray/hooks/use-tray-actions.ts",
+          "source": "@/features/pod/utils/pod-names"
+        },
+        {
+          "file": "src/tray/hooks/use-tray-data.ts",
+          "source": "@/features/pod/hooks/use-pod-lifecycle"
+        },
+        {
+          "file": "src/features/view/components/canvas-terminal-node.tsx",
+          "source": "@/features/pod/utils/item-utils"
+        },
+        {
+          "file": "src/features/view/components/canvas-terminal-node.tsx",
+          "source": "@/features/pod/utils/terminal-utils"
+        },
+        {
+          "file": "src/features/view/components/canvas-view.tsx",
+          "source": "@/features/pod/utils/add-item-actions"
+        },
+        {
+          "file": "src/features/view/components/canvas-view.tsx",
+          "source": "@/features/pod/utils/item-utils"
+        },
+        {
+          "file": "src/features/view/components/grid-view.tsx",
+          "source": "@/features/pod/utils/add-item-actions"
+        },
+        {
+          "file": "src/features/view/components/grid-view.tsx",
+          "source": "@/features/pod/utils/item-utils"
+        },
+        {
+          "file": "src/features/view/components/grid-view.tsx",
+          "source": "@/features/pod/utils/terminal-utils"
+        },
+        {
+          "file": "src/features/view/components/workspace-view-screen.tsx",
+          "source": "@/features/pod/utils/add-item-actions"
+        },
+        {
+          "file": "src/features/view/hooks/use-workspace-view-lifecycle.ts",
+          "source": "@/features/pod/hooks/use-pod-lifecycle"
+        },
+        {
+          "file": "src/routes/machines.tsx",
+          "source": "@/features/servers/components/machines-screen"
+        },
+        {
+          "file": "src/routes/pods.$podId.tsx",
+          "source": "@/features/pod/components/pod-screen"
+        },
+        {
+          "file": "src/routes/templates.$templateId.tsx",
+          "source": "@/features/pod/components/pod-screen"
+        },
+        {
+          "file": "src/routes/templates.index.tsx",
+          "source": "@/features/pod/components/templates-screen"
+        }
+      ]
+    }
+  }
+}

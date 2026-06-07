@@ -1,0 +1,13 @@
+{
+  "name": "@wanda/tasks",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./testing": "./src/testing.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {}
+}

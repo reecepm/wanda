@@ -1,0 +1,25 @@
+{
+  "name": "@wanda/agent-providers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./codex": "./src/codex/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@wanda/agent-protocol": "workspace:*",
+    "@wanda/agent-runtime": "workspace:*",
+    "effect": "^3.19.16",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
+}

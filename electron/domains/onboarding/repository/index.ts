@@ -1,0 +1,1 @@
+export { updateTemplateDefaultView } from './views'
